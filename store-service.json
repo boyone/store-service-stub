@@ -1,0 +1,128 @@
+{
+  "port": 8000,
+  "protocol": "http",
+  "defaultResponse": {
+    "statusCode": 400,
+    "headers": {
+      "Connection": "Keep-Alive",
+      "Content-Length": 0
+    }
+  },
+  "stubs": [
+    {
+      "name": "product list",
+      "predicates": [
+        {
+          "equals": {
+            "method": "GET",
+            "path": "/api/v1/product"
+          }
+        }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "<%- stringify('./product-list.json') %>"
+          }
+        }
+      ]
+    },
+    {
+      "name": "product detail 1",
+      "predicates": [
+        {
+          "equals": {
+            "method": "GET",
+            "path": "/api/v1/product/1"
+          }
+        }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "<%- stringify('./bicycle.json') %>"
+          }
+        }
+      ]
+    },
+    {
+      "name": "product detail 2",
+      "predicates": [
+        {
+          "equals": {
+            "method": "GET",
+            "path": "/api/v1/product/2"
+          }
+        }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "<%- stringify('./diner-set.json') %>"
+          }
+        }
+      ]
+    },
+    {
+      "name": "order",
+      "predicates": [
+        {
+          "equals": {
+            "method": "POST",
+            "path": "/api/v1/order"
+          }
+        }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": {
+              "order_id": 8004359104,
+              "total_price": 14.95
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "confirm payment",
+      "predicates": [
+        {
+          "equals": {
+            "method": "POST",
+            "path": "/api/v1/confirmPayment"
+          }
+        }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": {
+              "notify_message": "วันเวลาที่ชำระเงิน 1/3/2020 13:30:00 หมายเลขคำสั่งซื้อ 8004359104 คุณสามารถติดตามสินค้าผ่านช่องทาง Kerry หมายเลข 1785261900"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
