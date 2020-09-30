@@ -15,7 +15,10 @@
         {
           "equals": {
             "method": "GET",
-            "path": "/api/v1/product"
+            "path": "/api/v1/product",
+            "headers": {
+              "Accept": "application/json"
+            }
           }
         }
       ],
@@ -37,7 +40,10 @@
         {
           "equals": {
             "method": "GET",
-            "path": "/api/v1/product/1"
+            "path": "/api/v1/product/1",
+            "headers": {
+              "Accept": "application/json"
+            }
           }
         }
       ],
@@ -59,7 +65,10 @@
         {
           "equals": {
             "method": "GET",
-            "path": "/api/v1/product/2"
+            "path": "/api/v1/product/2",
+            "headers": {
+              "Accept": "application/json"
+            }
           }
         }
       ],
@@ -81,7 +90,11 @@
         {
           "equals": {
             "method": "POST",
-            "path": "/api/v1/order"
+            "path": "/api/v1/order",
+            "headers": {
+              "Accept": "application/json",
+              "Content-Type": "application/json"
+            }
           }
         }
       ],
@@ -106,7 +119,11 @@
         {
           "equals": {
             "method": "POST",
-            "path": "/api/v1/confirmPayment"
+            "path": "/api/v1/confirmPayment",
+            "headers": {
+              "Accept": "application/json",
+              "Content-Type": "application/json"
+            }
           }
         }
       ],
