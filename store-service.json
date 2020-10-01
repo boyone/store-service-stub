@@ -85,7 +85,7 @@
       ]
     },
     {
-      "name": "order",
+      "name": "order diner set",
       "predicates": [
         {
           "equals": {
@@ -96,6 +96,11 @@
               "Content-Type": "application/json"
             }
           }
+        },
+        {
+          "equals": { "body": 2  },
+          "jsonpath": { "selector": "$.cart[0].product_id" },
+          "caseSensitive": true
         }
       ],
       "responses": [
@@ -114,6 +119,40 @@
       ]
     },
     {
+      "name": "order bicycle",
+      "predicates": [
+        {
+          "equals": {
+            "method": "POST",
+            "path": "/api/v1/order",
+            "headers": {
+              "Accept": "application/json",
+              "Content-Type": "application/json"
+            }
+          }
+        },
+        {
+          "equals": { "body": 1 },
+          "jsonpath": { "selector": "$.cart[0].product_id" },
+          "caseSensitive": true
+        }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": {
+              "order_id": 8004359105,
+              "total_price": "241.90"
+            }
+          }
+        }
+      ]
+    },
+    {
       "name": "confirm payment",
       "predicates": [
         {
@@ -125,6 +164,16 @@
               "Content-Type": "application/json"
             }
           }
+        },
+        {
+          "equals": { "body": 8004359104 },
+          "jsonpath": { "selector": "$.order_id" },
+          "caseSensitive": true
+        },
+        {
+          "equals": { "body": 14.95 },
+          "jsonpath": { "selector": "$.total_price" },
+          "caseSensitive": true
         }
       ],
       "responses": [
@@ -136,6 +185,44 @@
             },
             "body": {
               "notify_message": "วันเวลาที่ชำระเงิน 1/3/2020 13:30:00 หมายเลขคำสั่งซื้อ 8004359104 คุณสามารถติดตามสินค้าผ่านช่องทาง Kerry หมายเลข 1785261900"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "confirm payment",
+      "predicates": [
+        {
+          "equals": {
+            "method": "POST",
+            "path": "/api/v1/confirmPayment",
+            "headers": {
+              "Accept": "application/json",
+              "Content-Type": "application/json"
+            }
+          }
+        },
+        {
+          "equals": { "body": 8004359105 },
+          "jsonpath": { "selector": "$.order_id" },
+          "caseSensitive": true
+        },
+        {
+          "equals": { "body": 241.90 },
+          "jsonpath": { "selector": "$.total_price" },
+          "caseSensitive": true
+        }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": {
+              "notify_message": "วันเวลาที่ชำระเงิน 1/3/2020 13:30:00 หมายเลขคำสั่งซื้อ 8004359105 คุณสามารถติดตามสินค้าผ่านช่องทาง Kerry หมายเลข 1785261901"
             }
           }
         }
