@@ -160,7 +160,7 @@
       ]
     },
     {
-      "name": "order diner set",
+      "name": "order diner set json",
       "predicates": [
         {
           "equals": {
@@ -186,7 +186,7 @@
               "Content-Type": "application/json; charset=utf-8"
             },
             "body": {
-              "order_id": 8004359104,
+              "order_id": 8004359122,
               "total_price": 14.95
             }
           }
@@ -228,7 +228,7 @@
       ]
     },
     {
-      "name": "diner set bicycle xml",
+      "name": "order diner set xml",
       "predicates": [
         {
           "equals": {
@@ -253,7 +253,7 @@
             "headers": {
               "Content-Type": "text/xml; charset=utf-8"
             },
-            "body": "<order><order_id>8004359104</order_id><total_price>14.95</total_price></order>"
+            "body": "<order><order_id>8004359122</order_id><total_price>14.95</total_price></order>"
           }
         }
       ]
@@ -303,7 +303,7 @@
           }
         },
         {
-          "equals": { "body": 8004359104 },
+          "equals": { "body": 8004359122 },
           "jsonpath": { "selector": "$.order_id" },
           "caseSensitive": true
         },
@@ -379,7 +379,7 @@
           }
         },
         {
-          "equals": { "body": 8004359104 },
+          "equals": { "body": 8004359122 },
           "xpath": { "selector": "/confirm-payment/order_id" },
           "caseSensitive": true
         },
@@ -396,7 +396,7 @@
             "headers": {
               "Content-Type": "text/xml; charset=utf-8"
             },
-            "body": "<notify_message>วันเวลาที่ชำระเงิน 1/3/2020 13:30:00 หมายเลขคำสั่งซื้อ 8004359104 คุณสามารถติดตามสินค้าผ่านช่องทาง Kerry หมายเลข 1785261900</notify_message>"
+            "body": "<notify_message>วันเวลาที่ชำระเงิน 1/3/2020 13:30:00 หมายเลขคำสั่งซื้อ 8004359122 คุณสามารถติดตามสินค้าผ่านช่องทาง Kerry หมายเลข 1785261900</notify_message>"
             
           }
         }
