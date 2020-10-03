@@ -4,7 +4,7 @@
 
 - Node.js
 
-    [Download](https://nodejs.org/en/download/) and Install
+  [Download](https://nodejs.org/en/download/) and Install
 
 - Mountebank
 
@@ -37,25 +37,25 @@ mb restart --configfile store-service.json --allowInjection &
 - Product List
 
 ```sh
-curl -i localhost:8000/api/v1/product
+curl -i -X GET localhost:8000/api/v1/product --header 'Accept: application/json'
 ```
 
 - Product Detail #1
 
 ```sh
-curl -i localhost:8000/api/v1/product/1
+curl -i -X GET localhost:8000/api/v1/product/1  --header 'Accept: application/json'
 ```
 
 - Product Detail #2
 
 ```sh
-curl -i localhost:8000/api/v1/product/2
+curl -i -x GET localhost:8000/api/v1/product/2  --header 'Accept: application/json'
 ```
 
 - Order Product
 
 ```sh
-curl -i -X POST localhost:8000/api/v1/order -d '{
+curl -i -X POST localhost:8000/api/v1/order --header 'Accept: application/json' --header 'Content-Type: application/json' -d '{
         "cart":[
                 {
                         "product_id": 2,
@@ -76,7 +76,7 @@ curl -i -X POST localhost:8000/api/v1/order -d '{
 - Confirm Payment
 
 ```sh
-curl -i -X POST localhost:8000/api/v1/confirmPayment -d '{ 
+curl -i -X POST localhost:8000/api/v1/confirmPayment --header 'Accept: application/json' --header 'Content-Type: application/json' -d '{
         "order_id": 8004359104,
         "payment_type": "credit",
         "type": "visa",
@@ -88,4 +88,3 @@ curl -i -X POST localhost:8000/api/v1/confirmPayment -d '{
         "total_price": 14.95
 }'
 ```
-
