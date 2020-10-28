@@ -1,0 +1,5 @@
+localhost
+
+file_server
+
+reverse_proxy /api/* store-service-stub:8000
