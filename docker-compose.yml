@@ -22,5 +22,5 @@ services:
         '/imposters/store-service.json',
         '--allowInjection',
       ]
-    ports:
-      - "8000:8000"
+    # ports:
+    #   - "8000:8000"
