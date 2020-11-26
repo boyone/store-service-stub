@@ -1,0 +1,8 @@
+{
+  "id": "${item}['id']",
+  "product_name": "${item}['name']",
+  "product_price": "${item}['price']",
+  "product_image": "${item}['image']",
+  "quantity": "${item}['quantity']",
+  "product_brand": "${item}['brand']"
+}

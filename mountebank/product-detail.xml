@@ -1,0 +1,8 @@
+<product>
+  <id>${item}['id']</id>
+  <product_name>${item}['name']</product_name>
+  <product_price>${item}['price']</product_price>
+  <product_image>${item}['image']</product_image>
+  <quantity>${item}['quantity']</quantity>
+  <product_brand>${item}['brand']</product_brand>
+</product>
