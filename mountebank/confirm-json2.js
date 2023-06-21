@@ -11,9 +11,9 @@ function (request, response, logger) {
     function getRandomArbitrary(min, max) {
         return Math.random() * (max - min) + min;
     }
-    const item = JSON.parse(request.body);
-    response.body.notify_message = response.body.notify_message.replace('8004359105', item.order_id);
 
+    const item = JSON.parse(request.body);
+    response.body.order_id = item.order_id;
     response.body.tracking_id = Math.floor(getRandomArbitrary(1000000000, 1999999999)).toString();
 
     var d = new Date();

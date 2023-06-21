@@ -1,0 +1,4 @@
+{
+    "order_id": "",
+    "total_price": ${item}['total_price']
+}
