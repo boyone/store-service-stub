@@ -14,13 +14,13 @@
 
 ##### Header
 
-Accept: application/json
+- Accept: application/json
 
 #### Response
 
 ##### Header
 
-Content-Type: application/json
+- Content-Type: application/json
 
 ##### Body
 
@@ -67,7 +67,7 @@ status code : 200
 
 ##### Header
 
-Accept: application/json
+- Accept: application/json
 
 #### Response
 
@@ -105,8 +105,8 @@ status code : 200
 
 ##### Header
 
-Accept: application/json
-Content-Type: application/json
+- Accept: application/json
+- Content-Type: application/json
 
 ##### Body
 
@@ -180,8 +180,8 @@ status code : 200
 
 ##### Header
 
-Accept: application/json
-Content-Type: application/json
+- Accept: application/json
+- Content-Type: application/json
 
 ##### Body
 
