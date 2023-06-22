@@ -371,7 +371,8 @@
             "method": "GET",
             "path": "/api/v2/product",
             "headers": {
-              "Accept": "application/json"
+              "Accept": "application/json",
+              "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
             }
           }
         }
@@ -395,7 +396,8 @@
           "equals": {
             "method": "GET",
             "headers": {
-              "Accept": "application/json"
+              "Accept": "application/json",
+              "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
             }
           }
         },
@@ -445,7 +447,8 @@
             "path": "/api/v2/order",
             "headers": {
               "Accept": "application/json",
-              "Content-Type": "application/json"
+              "Content-Type": "application/json",
+              "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
             }
           }
         },
@@ -497,7 +500,8 @@
             "path": "/api/v2/confirmPayment",
             "headers": {
               "Accept": "application/json",
-              "Content-Type": "application/json"
+              "Content-Type": "application/json",
+              "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
             }
           }
         },
@@ -537,6 +541,49 @@
               }
             ],
             "decorate": "<%- stringify(filename, 'confirm-json2.js') %>"
+          }
+        }
+      ]
+    },
+    {
+      "name": "login",
+      "predicates": [
+        {
+          "equals": {
+            "method": "POST",
+            "path": "/api/auth/login",
+            "headers": {
+              "Accept": "application/json",
+              "Content-Type": "application/json"
+            }
+          }
+        },
+        {
+          "exists": { "body": true },
+          "jsonpath": { "selector": "$.user" },
+          "caseSensitive": true
+        },
+        {
+          "equals": { "body": "john" },
+          "jsonpath": { "selector": "$.user" },
+          "caseSensitive": true
+        },
+        {
+          "exists": { "body": true },
+          "jsonpath": { "selector": "$.password" },
+          "caseSensitive": true
+        }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": {
+              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+            }
           }
         }
       ]
