@@ -1,6 +1,9 @@
-# API Spec
+# API Spec V.1
 
-## V.1
+- [Product List](#api-product-list)
+- [Product Detail](#api-product-detail)
+- [Submit Order](#api--submit-order)
+- [Confirm Payment](#api--confirm-payment)
 
 ## API: Product List
 
