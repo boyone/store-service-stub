@@ -6,6 +6,8 @@
 - [Submit Order](#api--submit-order)
 - [Confirm Payment](#api--confirm-payment)
 
+---
+
 ## API: Login
 
 ### URL : /api/auth/login
