@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   # api-gateway:
   #   image: caddy:2.2.1-alpine
@@ -11,16 +9,16 @@ services:
   #       - "443:443"
 
   store-service-stub:
-    image: andyrbell/mountebank:2.3.2
+    image: bbyars/mountebank:2.9.1
     volumes:
       - ./mountebank/:/imposters/
     ports:
       - "8000:8000"
+    working_dir: /imposters
     command:
       [
-        'mb',
         'start',
         '--configfile',
-        '/imposters/store-service.json',
+        'store-service.json',
         '--allowInjection'
       ]

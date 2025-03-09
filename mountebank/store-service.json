@@ -222,8 +222,12 @@
         },
         {
           "exists": { "body": true },
-          "xpath": { "selector": "/orders/cart/order/product_id" },
+          "xpath": { "selector": "/orders/carts/cart[1]/product_id" },
           "caseSensitive": true
+        },
+        {
+          "equals": { "body": 2 },
+          "xpath": { "selector": "/orders/carts/cart[1]/product_id" }
         }
       ],
       "responses": [
@@ -242,7 +246,7 @@
                   "from": "body",
                   "using": {
                     "method": "xpath",
-                    "selector": "/orders/cart/order/product_id"
+                    "selector": "/orders/carts/cart[1]/product_id"
                   }
                 },
                 "fromDataSource": {
@@ -328,12 +332,12 @@
         },
         {
           "exists": { "body": true },
-          "xpath": { "selector": "/confirm-payment/order_id" },
+          "xpath": { "selector": "/confirm_payment/order_id" },
           "caseSensitive": true
         },
         {
           "exists": { "body": true },
-          "xpath": { "selector": "/confirm-payment/total_price" },
+          "xpath": { "selector": "/confirm_payment/total_price" },
           "caseSensitive": true
         }
       ],

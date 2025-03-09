@@ -1,4 +1,4 @@
-<product-list>
+<root>
   <total>2</total>
   <products>
     <product>
@@ -14,4 +14,4 @@
       <product_image>/43_Piece_dinner_Set.png</product_image>
     </product>
   </products>
-</product-list>
+</root>
