@@ -1,6 +1,5 @@
-# API Spec V.2
+# API Spec V.1
 
-- [Login](#api-login)
 - [Product List](#api-product-list)
 - [Product Detail](#api-product-detail)
 - [Submit Order](#api--submit-order)
@@ -8,83 +7,47 @@
 
 ---
 
-## API: Login
-
-### URL : /api/auth/login
-
-### METHOD: POST
-
-##### Header
-
-- Accept: application/json
-- Content-Type: application/json
-
-##### Body
-
-```json
-{
-  "user": "john",
-  "password": "password"
-}
-```
-
-#### Response
-
-##### Header
-
-- Content-Type: application/json
-
-##### Body
-
-```json
-status code : 200
-{
-    "token": "<token>"
-}
-```
-
 ## API: Product List
 
 ### คำอธิบาย
 
 สำหรับไว้แสดงรายการสินค้า
 
-### URL: /api/v2/product
+### URL: /api/v1/product
 
 ### METHOD: GET
 
 ##### Header
 
-- Accept: application/json
-- Authorization: Bearer \<token>
+- Accept: text/xml
 
 #### Response
 
 ##### Header
 
-- Content-Type: application/json
+- Content-Type: text/xml
 
 ##### Body
 
-```json
+```xml
 status code : 200
-{
-    "total": 2,
-    "products": [
-        {
-            "id": 1,
-            "product_name": "Balance Training Bicycle",
-            "product_price": 119.95,
-            "product_image": "/Balance_Training_Bicycle.png"
-        },
-        {
-            "id": 2,
-            "product_name": "43 Piece dinner Set",
-            "product_price": 12.95,
-            "product_image": "/43_Piece_dinner_Set.png"
-        }
-    ]
-}
+<root>
+    <total>2</total>
+    <products>
+        <product>
+            <id>1</id>
+            <product_name>Balance Training Bicycle</product_name>
+            <product_price>119.95</product_price>
+            <product_image>/Balance_Training_Bicycle.png</product_image>
+        </product>
+        <product>
+            <id>2</id>
+            <product_name>43 Piece dinner Set</product_name>
+            <product_price>12.95</product_price>
+            <product_image>/43_Piece_dinner_Set.png</product_image>
+        </product>
+    </products>
+</root>
 ```
 
 | **Name**      | **Type** | **Description** |
@@ -101,31 +64,30 @@ status code : 200
 
 สำหรับแสดงข้อมูลของสินค้าชิ้นนั้น
 
-### URL: /api/v2/product/:id
+### URL: /api/v1/product/:id
 
-> Example: /api/v2/product/2
+> Example: /api/v1/product/1
 
 ### METHOD: GET
 
 ##### Header
 
-- Accept: application/json
-- Authorization: Bearer \<token>
+- Accept: text/xml
 
 #### Response
 
 ##### Body
 
-```json
+```xml
 status code : 200
-{
-    "id": "2",
-    "product_name": "43 Piece dinner Set",
-    "product_price": 12.95,
-    "product_image": "/43_Piece_dinner_Set.png",
-    "quantity": "10",
-    "product_brand": "CoolKidz"
-}
+<product>
+    <id>2</id>
+    <product_name>43 Piece dinner Set</product_name>
+    <product_price>12.95</product_price>
+    <product_image>/43_Piece_dinner_Set.png</product_image>
+    <quantity>10</quantity>
+    <product_brand>CoolKidz</product_brand>
+</product>
 ```
 
 | **Name**         | **Type** | **Description** |
@@ -142,35 +104,34 @@ status code : 200
 
 ยืนยันการสั่งซื้อสินค้า โดยจะส่งข้อมูลสินค้าและที่อยู่ในการจัดส่ง
 
-### URL : /api/v2/order
+### URL : /api/v1/order
 
 ### METHOD: POST
 
 ##### Header
 
-- Accept: application/json
-- Content-Type: application/json
-- Authorization: Bearer \<token>
+- Accept: text/xml
+- Content-Type: text/xml
 
 ##### Body
 
-```json
-{
-  "cart": [
-    {
-      "product_id": 2,
-      "quantity": 1
-    }
-  ],
-  "shipping_method": "Kerry",
-  "shipping_address": "405/37 ถ.มหิดล",
-  "shipping_sub_district": "ท่าศาลา",
-  "shipping_district": "เมือง",
-  "shipping_province": "เชียงใหม่",
-  "shipping_zip_code": "50000",
-  "recipient_name": "ณัฐญา ชุติบุตร",
-  "recipient_phone_number": "0970809292"
-}
+```xml
+<orders>
+	<carts>
+		<cart>
+			<product_id>2</product_id>
+			<quantity>1</quantity>
+		</cart>
+	</carts>
+	<shipping_method>Kerry</shipping_method>
+	<shipping_address>405/37 ถ.มหิดล</shipping_address>
+	<shipping_sub_district>ท่าศาลา</shipping_sub_district>
+	<shipping_district>เมือง</shipping_district>
+	<shipping_province>เชียงใหม่</shipping_province>
+	<shipping_zip_code>50000</shipping_zip_code>
+	<recipient_name>ณัฐญา ชุติบุตร</recipient_name>
+	<recipient_phone_number>097080929</recipient_phone_number>
+</orders>
 ```
 
 | **Name**               | **Type** | **Description**   |
@@ -191,20 +152,16 @@ status code : 200
 
 ##### Header
 
-```json
-{
-  "Content-Type": "application/json"
-}
-```
+- Content-Type: text/xml
 
 ##### Body
 
-```json
+```xml
 status code : 200
-{
-    "order_id": 8004359122,
-    "total_price": 14.95
-}
+<order>
+    <order_id>881437525</order_id>
+    <total_price>14.95</total_price>
+</order>
 ```
 
 | **Name**    | **Type** | **Description** |
@@ -218,30 +175,29 @@ status code : 200
 
 ยืนยันการชำระเงิน โดยจะส่งข้อมูลการชำระเงินเพื่อนำไปตัดเงินที่ธนาคารและส่งข้อมูลที่อยู่ในการจัดส่งให้กับทางขนส่งสินค้า
 
-### URL : /api/v2/confirmPayment
+### URL : /api/v1/confirmPayment
 
 ### METHOD: POST
 
 ##### Header
 
-- Accept: application/json
-- Content-Type: application/json
-- Authorization: Bearer \<token>
+- Accept: text/xml
+- Content-Type: text/xml
 
 ##### Body
 
-```json
-{
-  "order_id": 8004359122,
-  "payment_type": "credit",
-  "type": "visa",
-  "card_number": "4719700591590995",
-  "cvv": "752",
-  "expired_month": 7,
-  "expired_year": 20,
-  "card_name": "Karnwat Wongudom",
-  "total_price": 14.95
-}
+```xml
+<confirm_payment>
+	<order_id>{{order_id}}</order_id>
+	<payment_type>credit</payment_type>
+	<type>visa</type>
+	<card_number>4719700591590995</card_number>
+	<cvv>752</cvv>
+	<expired_month>7</expired_month>
+	<expired_year>20</expired_year>
+	<card_name>Karnwat Wongudom</card_name>
+	<total_price>14.9</total_price>
+</confirm_payment>
 ```
 
 | **Name**      | **Type** | **Description**        |
@@ -260,21 +216,18 @@ status code : 200
 
 ##### Header
 
-```json
-{
-  "Content-Type": "application/json"
-}
-```
+- Content-Type: text/xml
 
 ##### Body
 
-```json
-{
-  "payment_date": "1/3/2020 13:30:00",
-  "shipping": "Kerry",
-  "tracking_id": "1967070808",
-  "order_id": 834531601
-}
+```xml
+// Success (status code: 200)
+<notify_message>
+    <payment_date>9/3/2025 18:19:43</payment_date>
+    <order_id>881437525</order_id>
+    <shipping>Kerry</shipping>
+    <tracking_id>1045252449</tracking_id>
+</notify_message>
 ```
 
 | **Name**     | **Type** | **Description**      |
